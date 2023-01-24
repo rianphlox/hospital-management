@@ -110,6 +110,7 @@
     <!-- /.modal-dialog -->
 </div>
 <!-- /.modal add-patient -->
+
 <div class="modal fade" id="add-opd">
     <div class="modal-dialog ">
         <div class="modal-content">
@@ -308,6 +309,208 @@
     <!-- /.modal-dialog -->
 </div>
 <!-- /.modal add-opd -->
+
+
+<div class="modal fade" id="edit-opd">
+    <div class="modal-dialog ">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Edit OPD Patient</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form method="POST" action="<?= $_SERVER['PHP_SELF'] ?>" role="form">
+                    <input type="hidden" name="id" value="<?= $id ?>">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <label for="date">Date</label>
+                                <input type="date" value="<?= $date ?>" name="date" class="form-control" id="date" placeholder="Date">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="patient_name">Patient Name</label>
+                                <input type="text" value="<?= $patient_name ?>" name="patient_name" class="form-control" id="p_n" placeholder="Patient name">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="card_number">Card Number</label>
+                                <input type="text" value="<?= $card_number ?>" name="card_number" class="form-control" id="e_card_number" placeholder="Card number">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="Gender">Gender</label>
+                                <select name="sex" class="form-control">
+                                    <option <?=  $sex == 'male' ? 'selected' : '' ; ?> value="male">Male</option>
+                                    <option <?= $sex == 'female' ? 'selected' : '' ?> value="female">Female</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="Gender">Age Grade</label>
+                                <select name="age_grade" class="form-control">
+                                    <!-- <option>-- Select --</option> -->
+                                    <option value="0-28 days">0-28 days</option>
+                                    <option value="29days - 11months">29days - 11months</option>
+                                    <option value="12months - 59months">12months - 59months</option>
+                                    <option value="5-9 years">5-9 years</option>
+                                    <option value="10-19 years">10-19 years</option>
+                                    <option value=">= 20 years">>= 20 years</option>
+
+                                </select>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="age">Age</label>
+                                <input type="number" name="age" value="<?= $age ?>" class="form-control" id="e_age" placeholder="Age">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="Attendance Type">Attendance Type</label>
+                                <select name="attendance_type" class="form-control">
+                                    <option <?=  $attendance_type == 'New' ? 'selected' : '' ; ?> value="New">New</option>
+                                    <option <?=  $attendance_type == 'Follow Up' ? 'selected' : '' ; ?>  value="Follow Up">Follow Up</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="weight">Weight</label>
+                                <input type="text" name="weight" value="<?= $weight ?> " class="form-control" id="e_weight" placeholder="Weight(kg)">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="height">Height</label>
+                                <input type="text" name="height" value="<?= $height ?> " class="form-control" id="e_height" placeholder="Height (m)">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="bmi">BMI</label>
+                                <input type="text" name="bmi" value="<?= $bmi ?> " class="form-control" id="e_bmi" placeholder="BMI">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="presenting_complaints">Presenting Complaint(s)</label>
+                                <textarea name="presenting_complaints" id="presenting_complaints" placeholder="Presenting Complaints" class="form-control"> <?= $presenting_complaints ?> </textarea>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="lab_inv_done">Lab Investigation</label>
+                                <select name="lab_inv_done" class="form-control">
+                                    <option value="wilder">Wilder</option>
+                                    <option value="malaria">Malaria</option>
+                                    <option value="typhoid">Typhoid</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="diagnosis">Diagnosis</label>
+                                <textarea class="form-control" name="diagnosis" placeholder="Diagnosis" id="diagnosis"> <?= $diagnosis ?></textarea>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="nok">Drugs Given</label>
+                                <textarea class="form-control" name="drugs_given" placeholder="Drugs Given" id="e_dg"> <?= $drugs_given ?> </textarea>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="outcome">Outcome of Visit</label>
+                                <select name="outcome_of_visits" class="form-control">
+                                    <option value="nt">NT</option>
+                                    <option value="t">T</option>
+                                    <option value="d">A</option>
+                                    <option value="r">RO</option>
+                                    <option value="d">D</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="clinical_diagnosis">Clinical Diagnosis</label>
+                                <select name="clinical_diagnosis" id="clinical_diagnosis" class="form-control">
+                                    <option value="<5yrs"><5yrs </option>
+                                    <option value=">5yrs">>5yrs </option>
+                                    <option value="pw">PW</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="ldr">Lab Diagnosis (RDT)</label>
+                                <select name="rdt" class="form-control" id="ld">
+                                    <option value=""></option>
+                                    <option value="< 5yrs"> < 5yrs</option>
+                                    <option value="> 5yrs">> 5yrs</option>
+                                    <option value="> 5yrs">> 5yrs</option>
+                                    <option value="PW">PW</option>
+                                    
+                                </select>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="microscopy">Lab Diagnosis (Microscopy)</label>
+                                <select class="form-control" name="microscopy" class="form-control" id="microscopy">
+                                    <option value=""></option>
+                                    <option value="< 5yrs POS">< 5yrs POS </option>
+                                    <option value="> 5yrs POS">> 5yrs POS</option>
+                                    <option value="< 5yrs NEG">< 5yrs NEG</option>
+                                    <option value="> 5yrs NEG">> 5yrs NEG</option>
+                                    <option value="PW">PW</option>
+                                    
+                                </select>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="act_given">ACT given</label>
+                                <select class="form-control" name="act_given" id="act_given">
+                                    <option value="<5yrs"><5yrs</option>
+                                    <option value=">5yrs">>5yrs</option>
+                                    <option value="PW">PW</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="s_m">Severe Malaria</label>
+                                <select class="form-control" name="severe_malaria" id="a_m">
+                                    <option value=""></option>
+                                    <option value="<5yrs"><5yrs</option>
+                                    <option value=">5yrs">>5yrs</option>
+                                    <option value="PW">PW</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="pre_referral_">Pre-referral Treatment</label>
+                                <select class="form-control" name="pre_referral_treatment" id="pre_referral_treatment">
+                                    <option value=""></option>
+                                    <option value="IV-Artesunate">IV artesunate</option>
+                                    <option value="IM/IV-Artemether">IM/IV artemether</option>
+                                    <option value="Other-Referral">Other Referral</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <label for="tb_screened">TB Screened</label>
+                                <select class="form-control" name="tubeculosis" id="tb_screened">
+                                    <option value="yes">Yes</option>
+                                    <option value="no">No</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <label for="hepatitis_b">Hepatitis B</label>
+                                <select class="form-control" name="hepatitis_b" id="hepatitis_b">
+                                    <option value="yes">Yes</option>
+                                    <option value="no">No</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <label for="hepatitis_c">Hepatitis C</label>
+                                <select class="form-control" name="hepatitis_c" id="hepatitis_c">
+                                    <option value="yes">Yes</option>
+                                    <option value="no">No</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="gender_violence">Gender Violence</label>
+                                <select class="form-control" name="gender_violence" id="gender_violence">
+                                    <option <?=  $gender_violence == 'No' ? 'selected' : '' ; ?>  value="No">No</option>
+                                    <option <?=  $gender_violence == 'Yes' ? 'selected' : '' ; ?>  value="Yes">Yes</option>
+                                </select>
+                            </div>
+                        </div>
+                        <button name="submit" type="submit" class="btn btn-primary">Submit</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    </div>
+                    <!-- /.card-body -->
+
+                </form>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- Edit OPD ends here -->
+
+
 <div class="modal fade" id="add-labour">
     <div class="modal-dialog ">
         <div class="modal-content">

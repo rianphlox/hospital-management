@@ -20,21 +20,21 @@
       $weight = $_POST['weight'];
       $height = $_POST['height'];
       $bmi = $_POST['bmi'];
-      $presenting_complaints =  $_POST['presenting_complaints'];
+      $presenting_complaints = $_POST['presenting_complaints'];
       $lab_inv_done = $_POST['lab_inv_done'];
       $diagnosis = $_POST['diagnosis'];
       $drugs_given = $_POST['drugs_given'];
       $outcome_of_visits = $_POST['outcome_of_visits'];
-      $clinical_diagnosis = $_POST['clinical_diagnosis'];
-      $rdt = $_POST['rdt'];
-      $microscopy = $_POST['microscopy'];
-      $act_given = $_POST['act_given'];
-      $severe_malaria = $_POST['severe_malaria'];
+      $clinical_diagnosis = htmlentities($_POST['clinical_diagnosis']);
+      $rdt = htmlentities($_POST['rdt']);
+      $microscopy = htmlentities($_POST['microscopy']);
+      $act_given = htmlentities($_POST['act_given']);
+      $severe_malaria = htmlentities($_POST['severe_malaria']);
       $pre_referral_treatment = $_POST['pre_referral_treatment'];
-      $tubeculosis = $_POST['tubeculosis'];
-      $hepatitis_b = $_POST['hepatitis_b'];
-      $hepatitis_c = $_POST['hepatitis_c'];
-      $gender_violence = $_POST['gender_violence'];
+      $tubeculosis = $db->conn->real_escape_string($_POST['tubeculosis']);
+      $hepatitis_b = $db->conn->real_escape_string($_POST['hepatitis_b']);
+      $hepatitis_c = $db->conn->real_escape_string($_POST['hepatitis_c']);
+      $gender_violence = $db->conn->real_escape_string($_POST['gender_violence']);
 
 
       $sql = "INSERT INTO `out_patient_dept` (`date`, `patient_name`, `card_number`, `sex`, `age_grade`, `age`, `attendance_type`, `weight`, `height`, `bmi`, `presenting_complaints`, `lab_inv_done`, `diagnosis`, `drugs_given`, `outcome_of_visits`, `clinical_diagnosis`, `rdt`, `microscopy`, `act_given`, `severe_malaria`, `pre_referral_treatment`, `tubeculosis`, `hepatitis_b`, `hepatitis_c`, `gender_violence`) VALUES ( '$date', '$patient_name', '$card_number', '$sex', '$age_grade', '$age', '$attendance_type', '$weight', '$height', '$bmi', '$presenting_complaints', '$lab_inv_done', '$diagnosis', '$drugs_given', '$outcome_of_visits', '$clinical_diagnosis', '$rdt', '$microscopy', '$act_given', '$severe_malaria', '$pre_referral_treatment', '$tubeculosis', '$hepatitis_b', '$hepatitis_c', '$gender_violence');";
@@ -118,7 +118,7 @@
                           <td><?= ucwords($v) ?></td>
                         <?php endforeach; ?>
                         <td>
-                          <a href="edit-patient?id=<?= $val['id'] ?>" data-toggle="tooltip" title="Edit">
+                          <a href="edit-opd?id=<?= $val['id'] ?>" data-toggle="tooltip" title="Edit">
                             <button type="button" class="btn btn-success btn-icon-text btn-flat btn-sm" data-toggle="modal" data-target="#edit-patient" style="font-size:13px;">
                               <i class="fas fa-pen"></i>
                             </button>

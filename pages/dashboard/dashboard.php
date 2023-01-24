@@ -5,25 +5,27 @@
     $results = $db->getAllPatients();
     $states = $db->getAllStates();
 
+
+
     if (isset($_POST['submit'])) {
       // echo "<pre>";
       // print_r($_POST);
       // echo "</pre>";
-      $date = $_POST['date'];
+      $date = $db->sanitize($_POST['date']);
       
-      $patient_name = $_POST['patient_name'];
-      $card_number = $_POST['card_number'];
-      $dob = $_POST['dob'];
-      $sex = $_POST['sex'];
-      $age = $_POST['age'];
-      $address = $_POST['address'];
-      $state = $_POST['state'];
-      $phone_number = $_POST['phone_number'];
-      $first_contact = $_POST['f_c'];
-      $nok = $_POST['nok'];
-      $nok_relationship = $_POST['nok_rel'];
-      $nok_address = $_POST['nok_address'];
-      $nok_phone = $_POST['nok_phone'];
+      $patient_name = $db->sanitize($_POST['patient_name']);
+      $card_number = $db->sanitize($_POST['card_number']);
+      $dob = $db->sanitize($_POST['dob']);
+      $sex = $db->sanitize($_POST['sex']);
+      $age = $db->sanitize($_POST['age']);
+      $address = $db->sanitize($_POST['address']);
+      $state = $db->sanitize($_POST['state']);
+      $phone_number = $db->sanitize($_POST['phone_number']);
+      $first_contact = $db->sanitize($_POST['f_c']) ;
+      $nok = $db->sanitize($_POST['nok']);
+      $nok_relationship = $db->sanitize($_POST['nok_rel']);
+      $nok_address = $db->sanitize($_POST['nok_address']);
+      $nok_phone = $db->sanitize($_POST['nok_phone']);
 
       $sql = "INSERT INTO `attendance_register` (`date`, `patient_name`, `card_number`, `date_of_birth`, `sex`, `age`, `contact_address`, `state`, `telephone`, `first_contact`, `nok_name`, `nok_relationship`, `nok_address`, `nok_phone`) VALUES ( '$date', '$patient_name', '$card_number', '$dob', '$sex', '$age', '$address', '$state', '$phone_number', '$first_contact', '$nok', '$nok_relationship', '$nok_address', '$nok_phone')";
       if ($db->conn->query($sql)) {

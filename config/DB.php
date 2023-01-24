@@ -70,4 +70,8 @@
             $stmt->execute();
             return $stmt->get_result();
         }
+
+        public function sanitize($field) {
+            return htmlentities(htmlspecialchars($field));
+        }
     }
